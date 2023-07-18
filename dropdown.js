@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const dropdown = document.getElementById('dropdown');
+    const csvUrl = 'https://raw.githubusercontent.com/edshorthouse/imd/94de5d303a2cac1e4b05793ca6f2bfae9d89b9df/dropdown%20ref.csv';
 
     // Fetch the CSV file
-    fetch('dropdown ref.csv')
+    fetch(csvUrl)
         .then(response => response.text())
         .then(data => {
             // Split the CSV content into an array of items
