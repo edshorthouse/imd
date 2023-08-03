@@ -223,10 +223,17 @@ function createHighchartsChart(scoreCounts) {
         text: '',
       },
       labels: {
-        format: '{value}%'
+		formatter: function () {
+		  return this.value.toFixed(0) + '%';
+		}
       },
       tickInterval: 5,
       min: 0
+    },
+    tooltip: {
+      formatter: function () {
+        return this.y.toFixed(1) + '%';
+      }
     },
     plotOptions: {
       series: {
@@ -274,14 +281,22 @@ function setupHighcharts(mostDeprivedData, scoreCounts) {
 		text: '',
 	  },
 	  labels: {
-		format: '{value}%'
+		formatter: function () {
+		  return this.value.toFixed(0) + '%';
+		}
 	  },
 	  tickInterval: 5,
 	  min: 0
 	},
+    tooltip: {
+      formatter: function () {
+        return this.y.toFixed(1) + '%';
+      }
+    },
 	plotOptions: {
 	  series: {
 		lineWidth: 2,
+		color: '#FF0000',
 		dataLabels: {
 		  enabled: true,
 		  formatter: function () {
