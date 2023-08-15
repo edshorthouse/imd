@@ -249,7 +249,7 @@ function createHighchartsChart(scoreCounts) {
         labels: {
 			rotation: 0,
             style: {
-                fontSize: '0.73vw'
+                fontSize: '0.75vw'
             },
             step: 1,
             overflow: 'justify',
@@ -262,7 +262,7 @@ function createHighchartsChart(scoreCounts) {
         },
         labels: {
             style: {
-                fontSize: '0.73vw'
+                fontSize: '0.75vw'
             },
             formatter: function () {
                 return this.value.toFixed(0) + '%';
@@ -282,7 +282,7 @@ function createHighchartsChart(scoreCounts) {
             dataLabels: {
                 enabled: true,
                 style: {
-                    fontSize: '0.73vw'
+                    fontSize: '0.75vw'
                 },
                 formatter: function () {
                     return this.y.toFixed(0) + '%';
@@ -401,7 +401,7 @@ function setupHighcharts(domainDropdown) {
                       tickInterval: 1,
                       labels: {
                         style: {
-                          fontSize: '0.73vw'
+                          fontSize: '0.75vw'
                         }
                       }
                     },
@@ -414,7 +414,7 @@ function setupHighcharts(domainDropdown) {
                       },
                       labels: {
                         style: {
-                          fontSize: '0.73vw'
+                          fontSize: '0.75vw'
                         },
                         formatter: function () {
                           return this.value.toFixed(0);
@@ -435,7 +435,7 @@ function setupHighcharts(domainDropdown) {
                         dataLabels: {
                           enabled: true,
                           style: {
-                            fontSize: '0.73vw'
+                            fontSize: '0.75vw'
                           },
                           formatter: function () {
                             return this.y.toFixed(0);
@@ -602,7 +602,7 @@ function updateTextContent(selectedValue, rankValue1, rankValue, selectedDomain,
 	
 	var textContent = `
 		<ul class="custom-bullet-list">
-			<li>${selectedValue} is ranked <b>${rankValue1}</b> out of 317 local authority districts; where 1 is the most deprived district in England. This is using the average score across all neighbourhoods for the <b>${selectedDomain}</b> domain. </li>
+			<li><b>${selectedValue}</b> is ranked <b>${rankValue1}</b> out of 317 local authority districts; where 1 is the most deprived district in England. This is using the average score across all neighbourhoods for the <b>${selectedDomain}</b> domain. </li>
 			<li>This is amongst the <b>${x} deprived</b> districts in England for the <b>${selectedDomain}</b> domain.</li>
 			<li>The decile view below shows that, for the <b>${selectedDomain}</b> domain, <b>${Number(y1).toFixed(0)}%</b> of the neighbourhoods in <b>${selectedValue}</b> are amongst the 10% most deprived neighbourhoods in England, and <b>${Number(y10).toFixed(0)}%</b> of the neighbourhoods in <b>${selectedValue}</b> are amongst the 10% least deprived neighbourhoods in England.</li>
 			<li>The domain view shows the District National Rank of <b>${selectedValue}</b> across each of the IMD domains. The domains with a lower rank could potentially be highlighted as priorities for improvement locally. </li>
