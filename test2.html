@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/highcharts-more.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+
+  <title>IMD 2019 Dashboard</title>
+  
+  <link rel="stylesheet" href="imd.css" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" />
+</head>
+<body>
+
+	<div id="top" style="display: flex; flex-direction: row;">
+	  
+	  <div id="top0">
+		<div id="header">
+			<center><header>IMD 2019 Dashboard</header></center>
+		</div>
+	  </div>
+	  
+	  <div id="top1">
+		<div id="tabs">
+			<ul style="text-align: center;">
+				<li class="tabLabel" style="display: inline-block; margin-right: 5px;"><a href="test2.html">District Dashboard</a></li>
+				<li class="tabLabel2" style="display: inline-block; margin-right: 5px;"><a href="glossary.html">Glossary</a></li>
+			</ul>
+		</div>
+	  </div>
+	  
+	  <div id="top4">
+		  <div id="top5">
+			<center><b>Source: MHCLG</b></center>
+		  </div>
+		  <div id="top5">
+			<a href="https://raw.githubusercontent.com/edshorthouse/imd/ffa1a9662916ffad606c716675328e09b0e6ae47/IMD2019.csv" download="IMD2019.csv">
+				Download Data
+			</a>
+		  </div>
+	  </div>
+	  
+	</div>
+  
+  <div id="top2">
+  
+		  <label for="dropdown">Select a district:&nbsp;</label>
+		  <select id="dropdown"></select>
+		  
+		  <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+		  
+		  <label for="domain">Select a domain:&nbsp;</label>
+			<select id="domain">
+			  <option value="Overall Decile">Overall</option>
+			  <option value="Income Decile">Income</option>
+			  <option value="Employment Decile">Employment</option>
+			  <option value="Education, Skills and Training Decile">Education, Skills and Training</option>
+			  <option value="Health Deprivation and Disability Decile">Health Deprivation and Disability</option>
+			  <option value="Crime Decile">Crime</option>
+			  <option value="Barriers to Housing and Services Decile">Barriers to Housing and Services</option>
+			  <option value="Living Environment Decile">Living Environment</option>
+			</select>
+	
+  </div>
+  
+  <div id="main-content" style="display: flex; flex-direction: row;">
+  
+  	  <div id="charts" style="display: flex; flex-direction: column;">
+	    
+		<div id="headline" style="display: flex; flex-direction: row;">
+		
+		  <div id="container5" style="display: flex; flex-direction: column;">
+		  
+			<div id="container4">
+			</div>
+			
+			<div id="top3">
+			  <li class="tabLabel" style="display: inline-block; margin-right: 5px;"><a href="#chart1">Decile View</a></li>
+			  <li class="tabLabel" style="display: inline-block; margin-right: 5px;"><a href="#chart2">Domain View</a></li>
+			</div>
+			
+		  </div>
+		
+		  <div id="container3">
+			<style>
+				.custom-bullet-list {
+					margin-left: 8px;
+					padding-left: 0;
+				}
+			</style>
+		  </div>
+		  
+		</div>
+	  
+
+
+		<div id="container2">
+		  <div class="container">
+			<div id="chart1"></div>
+			<div id="chart2" style="display: none;"></div>
+		  </div>
+		</div>
+		  
+	  </div>
+  
+	  <div id="container1">
+		  
+		  <div id="textbox"></div>
+		  <div id="map"></div>
+
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+		  <script src="imd2.js"></script>
+
+		  <script>
+			var map = L.map("map").setView([52.561928, -1.464854], 7);
+
+			L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+			  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+			}).addTo(map);
+
+			var markers = L.markerClusterGroup();
+			var geojsonLayers = {}; // Store geojson layers for each selected option
+			var listEValues = []; // Array to store the selected option's related values (lsoa11nm)
+
+			var dropdown = document.getElementById("dropdown");
+			var domain = document.getElementById("domain").value;
+			var textbox = document.getElementById("textbox");
+
+			fetch("https://raw.githubusercontent.com/edshorthouse/imdref/main/Lower_Super_Output_Area_(LSOA)_IMD_2019__(OSGB1936).geojson")
+			  .then(function (response) {
+				return response.json();
+			  })
+			  .then(function (data) {
+				fetch("https://raw.githubusercontent.com/edshorthouse/imd/4293a47380ae66adee14a29edbcc67cffdcdea0d/districtref.csv")
+				  .then(function (response) {
+					return response.text();
+				  })
+				  .then(function (csvData) {
+					var csvOptions = {
+					  header: true,
+					  skipEmptyLines: true,
+					  complete: function (results) {
+						var districtData = results.data;
+
+						function updateMap(selectedOption) {
+						  markers.clearLayers();
+
+						  var matchingFeatures = data.features.filter(function (feature) {
+							return listEValues.includes(feature.properties.lsoa11nm.slice(0, -5));
+						  });
+
+						  // Define a variable to store total count of selected LSOA tiles
+						  var countTotal = matchingFeatures.length;
+
+						  console.log("CountTotal: ", countTotal); // Logs the count total to the console
+
+						  matchingFeatures.forEach(function (feature) {
+							var layer = L.geoJSON(feature);
+							markers.addLayer(layer);
+							geojsonLayers[selectedOption] = geojsonLayers[selectedOption] || [];
+							geojsonLayers[selectedOption].push(layer);
+						  });
+
+						  map.addLayer(markers);
+
+						  if (geojsonLayers[selectedOption]) {
+							// If the geojson layer for the selected option exists, fit the map bounds to it
+							var bounds = new L.LatLngBounds(geojsonLayers[selectedOption].map(function (layer) {
+							  return layer.getBounds();
+							}));
+							map.fitBounds(bounds, { padding: [20, 20] });
+						  }
+						}
+
+						function updateTextbox(selectedOption) {
+						  // Find rows in column "LAD21NM" that exactly match the selected dropdown option
+						  var matchingRows = districtData.filter(function (row) {
+							return row["LAD21NM"].replace(/"/g, '').trim() === selectedOption.trim();
+						  });
+
+						  // Extract the values from column "lsoa11nm" in the matching rows
+						  listEValues = matchingRows.map(function (row) {
+							return row["lsoa11nm"];
+						  });
+
+						  textbox.textContent = listEValues.join(", ");
+						}
+
+						dropdown.addEventListener("change", function () {
+						  var selectedOption = dropdown.value; // Update the selected dropdown option
+
+						  // Clear existing map tiles before updating
+						  markers.clearLayers();
+
+						  updateTextbox(selectedOption);
+						  updateMap(selectedOption); // Update the map with the corresponding data
+						});
+
+						var uniqueDistricts = Array.from(new Set(districtData.map((row) => row["LAD21NM"].trim())));
+
+						// Initial population of the textbox and map
+						updateTextbox(dropdown.value);
+						updateMap(dropdown.value);
+					  },
+					};
+
+					Papa.parse(csvData, csvOptions);
+				  })
+				  .catch(function (error) {
+					console.log("Error fetching CSV:", error);
+				  });
+			  })
+			  .catch(function (error) {
+				console.log("Error fetching GeoJSON:", error);
+			  });
+		  </script>
+	  </div>
+	
+	<div id="loadingOverlay">
+		<div id="loading-text">Data Loading...</div>
+	</div>
+		
+  </div>
+	
+</body>
+</html>

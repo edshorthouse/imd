@@ -1,0 +1,299 @@
+body, html {
+  height: 98%;
+  width: 99%;
+  display: flex;
+  flex-direction: column;
+}
+
+header{
+	font-size: 150%;
+	font-weight: bold;
+} 
+
+header2{
+	font-size: 110%;
+	font-weight: bold;
+} 
+
+#top {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+#top0 {
+  width: calc(25% + 24px);
+  border: 4px solid black;
+}
+
+#top4 {
+  border: 4px solid black;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  margin-left: 4px;
+  padding: 4px;
+}
+
+#top5 {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 4px;
+  padding-right: 16px;
+  width: 100%;
+}
+
+#header {
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  border: 4px solid red;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+#top1 {
+  width: 75%;
+  border: 4px solid black;
+  align-items: center;
+  text-align: center;
+  margin-left: 4px;
+}
+
+#top2 {
+  border: 4px solid black;
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 4px;
+}
+
+#top6 {
+  border: 4px solid black;
+  text-align: left;
+  padding: 16px;
+  margin-bottom: 4px;
+  margin-right: 4px;
+}
+
+#top3 {
+  border: 4px solid black;
+  text-align: center;
+  padding: 8px;
+  margin-bottom: 4px;
+}
+
+#top7 {
+  border: 4px solid black;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+
+li.tabLabel {
+	list-style-type:none; 
+	display: inline-block; 
+	border: 2px solid black; 
+	min-width:4em; 
+	min-height:2ex; 
+	padding:0.3em; 
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	text-align: center;
+	font-family: Helvetica, sans-serif; 
+	font-weight:bold;
+	color: red;
+}
+
+li.tabLabel2 {
+	list-style-type:none; 
+	display: inline-block; 
+	border: 2px solid red; 
+	min-width:4em; 
+	min-height:2ex; 
+	padding:0.3em; 
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	text-align: center;
+	font-family: Helvetica, sans-serif; 
+	font-weight:bold;
+	color: red;
+} 
+
+li.tabLabel3 {
+	list-style-type:none; 
+	display: inline-block; 
+	border: 2px solid red; 
+	min-width:4em; 
+	min-height:2ex; 
+	padding:0.3em;
+	text-align: center;
+	font-family: Helvetica, sans-serif; 
+	font-weight:bold;
+} 
+
+li.tabLabel4 {
+	list-style-type:none; 
+	display: inline-block; 
+	border: 2px solid black; 
+	min-width:4em; 
+	min-height:2ex; 
+	padding:0.3em; 
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	text-align: center;
+	font-family: Helvetica, sans-serif; 
+	font-weight:bold;
+	color: red;
+	text-decoration: line-through;
+}
+
+#tabs .tabLabel a {
+		color: black;
+	}
+
+#tabs .tabLabel.ui-tabs-active a {
+	color: blue;
+}
+
+#tabs .tabLabel2 a {
+		color: red;
+	}
+	
+#tabs .tabLabel3 a {
+		color: black;
+	}
+
+#main-content {
+  height: 80%;
+  display: flex;
+  position: relative;
+}
+
+#main-content2 {
+  height: 90%;
+  display: flex;
+  flex-grow: 1;
+}
+
+#loadingOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+	width: 100%;
+	height: calc(100% + 16px);
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#charts {
+  width: 50%;
+  height: calc(100% + 16px);
+}
+
+#container1 {
+  width: 50%;
+  height: 100%;
+  border: 4px solid black;
+  padding: 4px;
+  margin-left: 4px;
+}
+
+#container2 {
+  width: calc(100%-4px);
+  height: 55%;
+  border: 4px solid black;
+}
+
+#headline {
+  width: (100%-4px);
+  height: 45%;
+}
+
+#container3 {
+  width: 50%;
+  height: calc(100%-4px);
+  border: 4px solid black;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 4px;
+  margin-left: 4px;
+  font-size: 0.73vw;
+}
+
+#container3 ul {
+    margin-left: 15px;  /* Adjust this value as per your needs */
+    padding-left: 0;
+}
+
+#container3 ul li {
+    margin-bottom: 6px;  /* Adjust this value to increase or decrease the spacing between bullet points */
+}
+
+#container4 {
+  height: 100%;
+  border: 4px solid black;
+  padding: 12px;
+  margin-bottom: 4px;
+}
+
+#container5 {
+	width: 50%;
+	height: calc(100%-4px);
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+#textbox {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+}
+
+#textbox2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+}
+
+#chart1, #chart2 {
+  display: none;
+}
+
+#chart1 {
+  display: block; /* Display chart1 by default */
+}

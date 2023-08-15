@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/highcharts-more.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<script type="text/javascript" src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+
+  <title>IMD 2019 Dashboard</title>
+  
+  <link rel="stylesheet" href="imd.css" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" />
+</head>
+<body>
+	<div id="top" style="display: flex; flex-direction: row;">
+	  
+	  <div id="top0">
+		<div id="header">
+			<center><header>IMD 2019 Dashboard</header></center>
+		</div>
+	  </div>
+	  
+	  <div id="top1">
+		<div id="tabs">
+			<ul style="text-align: center;">
+				<li class="tabLabel" style="display: inline-block; margin-right: 5px;"><a href="test2.html">District Dashboard</a></li>
+				<li class="tabLabel2" style="display: inline-block; margin-right: 5px;"><a href="glossary.html">Glossary</a></li>
+			</ul>
+		</div>
+	  </div>
+	  
+	  <div id="top4">
+		  <div id="top5">
+			<center><b>Source: MHCLG</b></center>
+		  </div>
+		  <div id="top5">
+			<a href="https://raw.githubusercontent.com/edshorthouse/imd/ffa1a9662916ffad606c716675328e09b0e6ae47/IMD2019.csv" download="IMD2019.csv">
+				Download Data
+			</a>
+		  </div>
+	  </div>
+	  
+	</div>
+  
+	<div id="main-content2">
+	  <div id="top6">  
+	  
+		<header2>Deprivation</header2>
+
+		<p>Socio-economic deprivation can be defined as a state of disadvantage experienced by individuals, groups, or families whose access to goods, conveniences, and available social capital is limited relative to their local community or wider society.</p>
+		<br>
+		<header2>IMD (Index of Multiple Deprivation)</header2>
+		<p>The Indices of Deprivation are unique measures of deprivation at a small local area level (Lower-layer Super Output Areas) across England, that have been produced by the Department for Levelling Up, Housing and Communities (DLUHC) and its predecessors since 2000.</p>
+		<p>The DLUHC measure deprivation in a broad way to encompass a wide range of an individual’s living conditions and, as such, seven distinct domains of deprivation are used:</p>
+		<ul class="custom-bullet-list">
+			<li>Income</li>
+			<li>Employment</li>
+			<li>Education, Skills and Training</li>
+			<li>Health Deprivation and Disability</li>
+			<li>Crime</li>
+			<li>Barriers to Housing and Services</li>
+			<li>Living Environment</li>
+		</ul>
+		<p>Each of these measures are based on a unique basket of indicators which can be recognised and measured separately, with the domains then combined to produce an overall relative measure of deprivation - the Index of Multiple Deprivation.</p>
+		<p>For more detail on these unique basket of indicators that make up each domain, please see the image on the right-hand side of the page. This graphic also illustrates the weight of each domain in the Indices of Deprivation, as well as detailing any sub-domains. </p>
+		<p>If you would like any additional information, please refer to the <a href="https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019" > main IMD 2019 release. </a> </p>
+								
+	  </div>
+	  
+	  <div id="top7">  
+
+		<img src="C:\Users\edsho\OneDrive - University of East Anglia\Dissertation\Domains.png" alt="Domains" style="height:100%;">
+						
+	  </div>
+	</div>
+</body>
