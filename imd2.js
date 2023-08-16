@@ -407,9 +407,9 @@ function setupHighcharts(domainDropdown) {
                     },
                     yAxis: {
                       title: {
-                        text: 'National Rank (1 = the most deprived)',
+                        text: 'National Rank (1 = most deprived)',
                         style: {
-                          fontSize: '0.73vw'
+                          fontSize: '0.75vw'
                         }
                       },
                       labels: {
@@ -512,7 +512,13 @@ function districtRankChart(containerHeight2, districtrank, percentages) {
 					  style: {
                         fontSize: '1vw'
                       }
-                },
+				},
+				subtitle: {
+					text: '1 = most deprived | 317 = least deprived',
+					style: {
+						fontSize: '0.75vw'
+					}
+				},
                 pane: {
                     startAngle: -90,
                     endAngle: 90,
